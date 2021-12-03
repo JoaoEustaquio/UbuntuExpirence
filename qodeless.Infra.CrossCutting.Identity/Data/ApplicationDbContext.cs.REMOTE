@@ -1,0 +1,57 @@
+﻿using System;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using qodeless.domain.Entities;
+using qodeless.Infra.CrossCutting.Identity.Entities;
+
+namespace qodeless.Infra.CrossCutting.Identity.Data
+{
+    public interface IAppDbContext
+    {
+    }
+
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IAppDbContext
+    {
+        public DbSet<Account> Accounts { get; set; }
+        public DbSet<AccountGame> AccountGames { get; set; }
+        public DbSet<Site> Sites { get; set; }
+        public DbSet<Device> Devices { get; set; }
+        public DbSet<DeviceGame> DeviceGames { get; set; }
+        public DbSet<Play> Plays { get; set; }
+        public DbSet<SessionDevice> SessionDevices { get; set; }
+        public DbSet<SessionSite> SessionSites { get; set; }
+        public DbSet<Game> Games { get; set; }
+        public DbSet<Vouscher> Vouschers { get; set; }
+        public DbSet<SuccessFee> SuccessFees { get; set; }
+        public DbSet<Balance> Balance { get; set; }
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            new Account(Guid.Empty).Configure(modelBuilder.Entity<Account>().ToTable("Account"));
+            new AccountGame(Guid.Empty).Configure(modelBuilder.Entity<AccountGame>().ToTable("AccountGame"));
+            new Site(Guid.Empty).Configure(modelBuilder.Entity<Site>().ToTable("Site"));
+            new Device(Guid.Empty).Configure(modelBuilder.Entity<Device>().ToTable("Device"));
+            new DeviceGame(Guid.Empty).Configure(modelBuilder.Entity<DeviceGame>().ToTable("DeviceGame"));
+            new Play(Guid.Empty).Configure(modelBuilder.Entity<Play>().ToTable("Play"));
+            new SessionDevice(Guid.Empty).Configure(modelBuilder.Entity<SessionDevice>().ToTable("SessionDevice"));
+            new SessionSite(Guid.Empty).Configure(modelBuilder.Entity<SessionSite>().ToTable("SessionSite"));
+            new Game(Guid.Empty).Configure(modelBuilder.Entity<Game>().ToTable("Game"));
+            new SuccessFee(Guid.Empty).Configure(modelBuilder.Entity<SuccessFee>().ToTable("SuccessFee"));
+            new Vouscher(Guid.Empty).Configure(modelBuilder.Entity<Vouscher>().ToTable("Vouscher"));
+            new Balance(Guid.Empty).Configure(modelBuilder.Entity<Balance>().ToTable("Balance"));
+            base.OnModelCreating(modelBuilder);
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
+
+            
+        }
+
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+        {
+        }
+
+        public ApplicationDbContext() { }
+    }
+}

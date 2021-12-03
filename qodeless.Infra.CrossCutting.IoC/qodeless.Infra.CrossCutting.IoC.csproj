@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\qodeless.application\qodeless.application.csproj" />
+    <ProjectReference Include="..\qodeless.domain\qodeless.domain.csproj" />
+    <ProjectReference Include="..\qodeless.Infra.CrossCutting.Identity\qodeless.Infra.CrossCutting.Identity.csproj" />
+  </ItemGroup>
+
+</Project>
