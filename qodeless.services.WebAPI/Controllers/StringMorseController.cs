@@ -1,25 +1,19 @@
-﻿using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Mvc;
-using qodeless.application;
-using qodeless.application.ViewModels;
-using qodeless.domain.Enums;
-using qodeless.domain.Enums.Model;
-using qodeless.Infra.CrossCutting.Identity.Data;
-using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using System.IO;
+using Renci.SshNet.Messages;
 
 namespace qodeless.services.WebAPI.Controllers
 {
-    [HttpGet]
-    public IActionResult Message()
+    class WriteAllText
     {
+        [HttpPost]
+        [Route("Message/[Model]")]
+        public static async Task ExampleAsync()
+        {
+            string text = "hello World!";
 
-    }
-
-    [HttpPost]
-    public IActionResult Morse()
-    {
-        var Morse = 
+            await File.WriteAllTextAsync("WriteText.txt", text);
+        }
     }
 }
