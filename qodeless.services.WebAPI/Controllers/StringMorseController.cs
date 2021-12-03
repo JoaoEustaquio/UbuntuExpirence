@@ -1,28 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using qodeless.services.WebApi.Model;
 using System.Threading.Tasks;
 using System.IO;
 using Renci.SshNet.Messages;
 
 namespace qodeless.services.WebAPI.Controllers
 {
-    [HttpGet]
-    public IActionResult Message()
-    public class StringMorseController 
+    class WriteAllText
     {
-        [HttpPost("StringMorseController")]
-        public string ReceiveMessage(MessageViewModel vm)
-        {
-            var message = vm.Name;
-            return message;
-    }
-    [HttpPost]
-    public IActionResult Morse()
+        [HttpPost]
+        [Route("Message/[Model]")]
         public static async Task ExampleAsync()
-    {
-        var Morse = 
+        {
+            string text = "hello World!";
 
             await File.WriteAllTextAsync("WriteText.txt", text);
         }
-    }    
+    }
 }
